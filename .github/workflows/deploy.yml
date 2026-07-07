@@ -1,0 +1,44 @@
+name: Deploy Frontend to GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.32.1
+
+      - name: Install Workspace Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build All Shared Packages
+        run: pnpm --filter "@astraea/*" build
+
+      - name: Build Frontend Static Export
+        run: pnpm --filter astraea-frontend build
+
+      - name: Prepare GitHub Pages Publish Directory
+        run: touch ./apps/frontend/out/.nojekyll
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./apps/frontend/out
+          publish_branch: gh-pages

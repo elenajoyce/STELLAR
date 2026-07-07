@@ -1,0 +1,29 @@
+{
+  "name": "astraea-gateway",
+  "version": "1.0.0",
+  "description": "API Gateway for Astraea",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/**/*.ts"
+  },
+  "dependencies": {
+    "@astraea/types": "workspace:*",
+    "@astraea/utils": "workspace:*",
+    "express": "^4.19.0",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0"
+  }
+}

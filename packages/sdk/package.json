@@ -1,0 +1,18 @@
+{
+  "name": "@astraea/sdk",
+  "version": "1.0.0",
+  "description": "TypeScript SDK client for Astraea",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@astraea/types": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

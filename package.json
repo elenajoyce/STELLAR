@@ -1,0 +1,35 @@
+{
+  "name": "astraea-monorepo",
+  "version": "1.0.0",
+  "description": "Astraea: AI-Powered Delegated Commerce on Stellar",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter \"*\" --parallel dev",
+    "dev:web": "pnpm --filter astraea-frontend dev",
+    "dev:gateway": "pnpm --filter astraea-gateway dev",
+    "dev:orchestrator": "pnpm --filter astraea-orchestrator dev",
+    "dev:agents": "pnpm --filter astraea-agents dev",
+    "dev:wallet": "pnpm --filter astraea-wallet dev",
+    "dev:payments": "pnpm --filter astraea-payments dev",
+    "dev:notifications": "pnpm --filter astraea-notifications dev",
+    "build": "pnpm --filter \"*\" build",
+    "typecheck": "pnpm --filter \"*\" typecheck",
+    "lint": "pnpm --filter \"*\" lint",
+    "lint:fix": "pnpm --filter \"*\" lint --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,md,yml,yaml,rs}\"",
+    "test": "pnpm --filter \"*\" test",
+    "test:unit": "pnpm --filter \"*\" test:unit",
+    "test:integration": "pnpm --filter \"*\" test:integration",
+    "test:contracts": "cd contracts && cargo test",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "db:migrate": "pnpm --filter astraea-gateway db:migrate",
+    "db:seed": "pnpm --filter astraea-gateway db:seed",
+    "db:reset": "pnpm --filter astraea-gateway db:reset"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "packageManager": "pnpm@10.32.1"
+}
